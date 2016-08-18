@@ -3,7 +3,7 @@
   <div>{!! link_to('articles/create', 'Write Article', array('class' => 'btn btn-success')) !!}</div>
   @foreach ($articles as $article)
     <div>
-      <h1>{{$article->title}}</h1>
+      <h3>{{$article->title}}</h3>
       <p>{{$article->content}}</p>
       <i>By {{$article->author}}</i>
       <div>

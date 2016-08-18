@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <script src="/js/jquery-1.1.js"></script>
+      <script src="/js/jquery-3.1.0.js"></script>
       <script src="/js/bootstrap.js"></script>
       <script src="/js/materialize.js"></script>
     </body>

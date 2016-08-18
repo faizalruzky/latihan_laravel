@@ -15,10 +15,11 @@ Route::get('/logout', 'SessionsController@logout');
 Route::post('/login', 'SessionsController@login');
 Route::auth();
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
-Route::get('/', 'ArticlesController@index');
+Route::get('/articles', 'ArticlesController@index');
 Route::resource('articles', 'ArticlesController');
+
 
 
 

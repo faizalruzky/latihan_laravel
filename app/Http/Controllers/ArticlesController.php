@@ -43,6 +43,7 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
+        $img = Image::make(Input::file('/public/upload_images'));
         $validate = Validator::make($request->all(), Article::valid());
         if($validate->fails()) {
         return back()

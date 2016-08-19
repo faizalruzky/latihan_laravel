@@ -1,6 +1,7 @@
 @extends("layouts.application")
 @section("content")
-{!! Form::open(['url' => 'articles', 'class' => 'form-horizontal', 'role' => 'form']) !!}
+{!! Form::open(['url' => 'articles', 'class' => 'form-horizontal', 'role' => 'form', 'enctype'=>"multipart/form-data" ]) !!}
+
   <div class="form-group">
     {!! Form::label('title', 'Title', array('class' => 'col-lg-3 control-label')) !!}
     <div class="col-lg-9">
@@ -20,10 +21,10 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('image', 'Image', array('class' => 'col-lg-3 control-label')) !!}
+    {!! Form::label('foto', 'foto', array('class' => 'col-lg-3 control-label')) !!}
     <div class="col-lg-9">
-      {!! Form::file('image', null, array('class' => 'form-control', 'rows' => 10)) !!}
-      {!! $errors->first('content') !!}
+      {!! Form::file('foto', null, array('class' => 'form-control', 'rows' => 10)) !!}
+      {!! $errors->first('foto') !!}
     </div>
     <div class="clear"></div>
   </div>

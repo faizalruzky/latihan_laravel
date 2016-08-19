@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\ImageUploadRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
 use App\Http\Requests;
 use App\Article;
-
+use Image,File;
 class ArticlesController extends Controller
 {
 
@@ -42,18 +43,37 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $img = Image::make(Input::file('/public/upload_images'));
+    {   
+        // dd($request->all());
         $validate = Validator::make($request->all(), Article::valid());
         if($validate->fails()) {
         return back()
         ->withErrors($validate)
         ->withInput();
-  } else {
-    Article::create($request->all());
-    Session::flash('notice', 'Success add article');
-    return Redirect::to('articles');
-  }
+       
+        } else {
+        $add = new Article();
+        $add->title=$request->title;
+        $add->content=$request->content;
+        $add->author=$request->author;
+        $file = $request->file('foto');
+        // $request->file('foto')->move(base_path() . '/public/upload_images/', $file);
+        // $file->save();
+        $add->image=$file->getClientOriginalName();
+        $add->save();
+        $img = Image::make($file);
+
+        $image_location = public_path().'/uploads/images/'.$add->id;
+     if(!File::exists($image_location)) {
+       File::makeDirectory($image_location, $mode=0777, true, true);
+     }
+// save the same file as jpeg with default quality
+        $img->save($image_location.'/'.$file->getClientOriginalName());
+        Session::flash('notice', 'Success add article');
+        return Redirect::to('articles');
+    }
+
+        
         //
     }
 

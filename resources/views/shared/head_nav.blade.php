@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li><a href="{{ url('/home') }}">Home</a></li>
-      <li>Gallery</li>
+      <li><a href="#">Gallery</a></li>
       <li><a href="{{ url('/articles') }}">Article</a></li>
       <li><a href="{{ url('/posts') }}">Posts</a></li>
       

@@ -52,22 +52,26 @@ class ArticlesController extends Controller
         ->withInput();
        
         } else {
-        $add = new Article();
-        $add->title=$request->title;
-        $add->content=$request->content;
-        $add->author=$request->author;
-        $file = $request->file('foto');
-        // $request->file('foto')->move(base_path() . '/public/upload_images/', $file);
-        // $file->save();
-        $add->image=$file->getClientOriginalName();
-        $add->save();
-        $img = Image::make($file);
+            $add = new Article();
+            $add->title=$request->title;
+            $add->content=$request->content;
+            $add->author=$request->author;
 
-        $image_location = public_path().'/uploads/images/'.$add->id;
-     if(!File::exists($image_location)) {
-       File::makeDirectory($image_location, $mode=0777, true, true);
-     }
-// save the same file as jpeg with default quality
+            $file = $request->file('foto');
+            $add->image=$file->getClientOriginalName();
+            
+            $add->save();
+            $img = Image::make($file);
+            $img->backup();
+            $img->fit(600, 300);
+            $image_location = public_path().'/uploads/images/'.$add->id;
+        
+        if(!File::exists($image_location)) {
+            File::makeDirectory($image_location, $mode=0777, true, true);
+        }
+        // save the same file as jpeg with default quality
+        $img->save($image_location.'/resize-'.$file->getClientOriginalName());
+        $img->reset();
         $img->save($image_location.'/'.$file->getClientOriginalName());
         Session::flash('notice', 'Success add article');
         return Redirect::to('articles');
@@ -120,8 +124,29 @@ class ArticlesController extends Controller
         ->withErrors($validate)
         ->withInput();
     } else {
-        $article = Article::find($id);
-        $article->update($request->all());
+        $update_article = Article::find($id);               
+        $update_article->title=$request['title'];
+        $update_article->content=$request['content'];
+        $update_article->author=$request['author'];
+
+         $file = $request->file('foto');
+            $update_article->image=$file->getClientOriginalName();
+            
+            $update_article->save();
+            $img = Image::make($file);
+            $img->backup();
+            $img->fit(600, 300);
+            $image_location = public_path().'/uploads/images/'.$update_article->id;
+        
+        if(!File::exists($image_location)) {
+            File::makeDirectory($image_location, $mode=0777, true, true);
+        }
+        // save the same file as jpeg with default quality
+        $img->save($image_location.'/resize-'.$file->getClientOriginalName());
+        $img->reset();
+        $img->save($image_location.'/'.$file->getClientOriginalName());
+
+        $update_article->update();
         Session::flash('notice', 'Success update article');
         return Redirect::to('articles');
     }

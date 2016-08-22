@@ -129,6 +129,11 @@ class ArticlesController extends Controller
         $update_article->content=$request['content'];
         $update_article->author=$request['author'];
 
+        if($request->file('foto') == "")
+        {
+            $update_article->image = $update_article->image;
+        } 
+        else{
          $file = $request->file('foto');
             $update_article->image=$file->getClientOriginalName();
             
@@ -137,6 +142,7 @@ class ArticlesController extends Controller
             $img->backup();
             $img->fit(600, 300);
             $image_location = public_path().'/uploads/images/'.$update_article->id;
+
         
         if(!File::exists($image_location)) {
             File::makeDirectory($image_location, $mode=0777, true, true);
@@ -145,7 +151,7 @@ class ArticlesController extends Controller
         $img->save($image_location.'/resize-'.$file->getClientOriginalName());
         $img->reset();
         $img->save($image_location.'/'.$file->getClientOriginalName());
-
+    }
         $update_article->update();
         Session::flash('notice', 'Success update article');
         return Redirect::to('articles');

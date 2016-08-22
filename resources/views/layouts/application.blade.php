@@ -13,12 +13,15 @@
       @include('shared.head_nav')
       <!-- Bagian Content -->
       <div class="container clearfix">
-        <div class="row row-offcanvas row-offcanvas-left ">
+      <div class="list-group">
+    <h3> Articles </h3>
+  </div>
+        <!-- <div class="row row-offcanvas row-offcanvas-left "> -->
           <!--Bagian Kiri-->
-          @include("shared.left_nav")
+         <!--  @include("shared.left_nav") -->
 
           <!--Bagian Kanan-->
-          <div id="main-content" class="col-xs-12 col-sm-9 main pull-right">
+          <div id="main-content">
             <div class="panel-body">
               @if (Session::has('error'))
                 <div class="session-flash alert-danger">

@@ -5,20 +5,17 @@
       <meta httpequiv="XUACompatible" content="IE=edge">
       <meta name="viewport" content="width=devicewidth, initialscale=1">
       <title>FaizalRuzky</title>
-      <link href="/css/bootstrap.css" rel="stylesheet" />
-      <link href="/css/materialize.css" rel="stylesheet" />
+      <link href="/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="/css/materialize.min.css" rel="stylesheet" />
     </head>
     <body style="padding-top:60px;">
       <!--bagian navigation-->
       @include('shared.head_nav')
       <!-- Bagian Content -->
       <div class="container clearfix">
-      <div class="list-group">
-    <h3> Articles </h3>
-  </div>
-        <!-- <div class="row row-offcanvas row-offcanvas-left "> -->
+       <!--  <div class="row row-offcanvas row-offcanvas-left "> -->
           <!--Bagian Kiri-->
-         <!--  @include("shared.left_nav") -->
+          <!-- @include("shared.left_nav") -->
 
           <!--Bagian Kanan-->
           <div id="main-content">

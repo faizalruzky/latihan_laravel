@@ -6,4 +6,5 @@
     <p>{!! $article->content!!}</p>
     <i>By {!! $article->author !!}</i>
   </div>
-@stop
+
+@endsection

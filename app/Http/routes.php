@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 Route::get('/articles', 'ArticlesController@index');
 Route::resource('articles', 'ArticlesController');
+Route::get('articles/{id}/delete','ArticlesController@destroy');
 
 
 

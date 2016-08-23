@@ -63,7 +63,7 @@ class ArticlesController extends Controller
             $add->save();
             $img = Image::make($file);
             $img->backup();
-            $img->fit(600, 300);
+            $img->crop(600, 300,0,0);
             $image_location = public_path().'/uploads/images/'.$add->id;
         
         if(!File::exists($image_location)) {

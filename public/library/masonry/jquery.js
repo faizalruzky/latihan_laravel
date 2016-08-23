@@ -1,16 +1,11 @@
 $('.grid').masonry({
   // set itemSelector so .grid-sizer is not used in layout
-  itemSelector: '.grid-item',
-  // use element for option
-  columnWidth: '.grid-sizer',
-  percentPosition: true
+ columnWidth: '.grid-sizer',
+itemSelector: '.grid-item',
+percentPosition: true,
+gutter: 10,
+// stamp elements
+stamp: '.stamp',
+fitWidth: true,
+originLeft: false
 })
-
-// init Masonry
-var $grid = $('.grid').masonry({
-  // options...
-});
-// layout Masonry after each image loads
-$grid.imagesLoaded().progress( function() {
-  $grid.masonry('layout');
-});

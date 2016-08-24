@@ -11,7 +11,7 @@
         <div class="col s4 m4">
           <div class="card small">
             <div class="card-image">
-               <img src="{{ asset('/uploads/images/'. $article->id . '/' . $article->image) }} " class="img-responsive">
+               <img class="materialboxed" src="{{ asset('/uploads/images/'. $article->id . '/' . $article->image) }} " class="img-responsive">
               		<span class="card-title">{{($article->title)}} </span>
             </div>
             <div class="card-content">
@@ -26,5 +26,9 @@
         </div>
         @endforeach
     </div>
-
+    <script type="text/javascript">
+	$(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+</script>
 @stop

@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::get('/articles', 'ArticlesController@index');
 Route::resource('articles', 'ArticlesController');
 Route::get('articles/{id}/delete','ArticlesController@destroy');
+Route::resource('comments','CommentsController');
+Route::get('comments', 'CommentsController@index');
 
 
 

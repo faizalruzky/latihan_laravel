@@ -4,6 +4,7 @@
       <meta charset="utf-8">
       <meta httpequiv="XUACompatible" content="IE=edge">
       <meta name="viewport" content="width=devicewidth, initialscale=1">
+      <meta name="_token" content="{{ csrf_token() }}" />    
       <title>FaizalRuzky</title>
       <!--Import library css-->
       <link href="/library/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
@@ -25,9 +26,10 @@
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       <script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
       <script src="custom/script.js"></script>
+        <script src="/js/custom.js"></script>
     </head>
     
-    <body>
+    <body style="padding-top:50px">
       <!--bagian navigation-->
       @include('shared.head_nav')
       <!-- Bagian Content -->
@@ -54,5 +56,6 @@
       </div>
       <link href="/library/masonry/style.css" rel="stylesheet"/>
       <script src="/library/masonry/jquery.js" type="text/javascript"></script>
+    
     </body>
   </html>

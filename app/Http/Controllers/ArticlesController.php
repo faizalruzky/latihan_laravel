@@ -18,12 +18,17 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         $articles = Article::all();
-    return view('articles.index')
-      ->with('articles', $articles);
-      //
+         $articles = Article::paginate(4);//->toJson();
+         if ($request::ajax()) {
+            $view=(String)view('articles.list')
+            ->with('articles', $articles)
+            ->render();
+            return response()->json(['view' => $view]);             
+         }else {
+            return view('articles.index')->with('articles', $articles);
+         }
     }
 
     /**
@@ -169,6 +174,11 @@ class ArticlesController extends Controller
     public function destroy($id)
     {
          $article = Article::find($id);
+         $image_location = public_path().'/uploads/images/'.$id.'/'.$article->image;
+         unlink($image_location);
+         $dir = public_path().'/uploads/images/'.$id;
+         File::deleteDirectory($dir);
+
         if ($article->delete()) {
         Session::flash('notice', 'Article success delete');
         return Redirect::to('articles');

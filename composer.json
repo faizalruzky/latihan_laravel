@@ -9,7 +9,6 @@
         "laravel/framework": "5.2.*",
         "appzcoder/crud-generator": "^1.1",
         "laravelcollective/html": "^5.2",
-        "barryvdh/laravel-debugbar": "^2.2",
         "intervention/image": "^2.3"
     },
     "require-dev": {

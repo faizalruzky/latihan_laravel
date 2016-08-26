@@ -1,6 +1,6 @@
 @extends("layouts.application")
 @section("content")
-      <div id="article_link">
+      <div id="list-article">
         @include('articles.list')
       </div>    
 @endsection

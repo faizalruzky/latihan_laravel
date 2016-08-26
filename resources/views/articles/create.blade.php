@@ -1,7 +1,7 @@
 @extends("layouts.application")
 @section("content")
 {!! Form::open(['url' => 'articles', 'class' => 'form-horizontal', 'role' => 'form', 'enctype'=>"multipart/form-data" ]) !!}
-
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
   <div class="form-group">
     {!! Form::label('title', 'Title', array('class' => 'col-lg-3 control-label')) !!}
     <div class="col-lg-9">

@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta httpequiv="XUACompatible" content="IE=edge">
       <meta name="viewport" content="width=devicewidth, initialscale=1">
-      <meta name="_token" content="{{ csrf_token() }}" />    
+      <meta name="csrf-token" content="{{ csrf_token() }}" />    
       <title>FaizalRuzky</title>
       <!--Import library css-->
       <link href="/library/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>

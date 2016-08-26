@@ -2,6 +2,8 @@
       <meta charset="utf-8">
       <meta httpequiv="XUACompatible" content="IE=edge">
       <meta name="viewport" content="width=devicewidth, initialscale=1">
+      <meta name="_token" content="{{ csrf_token() }}" />    
+
       <title>FaizalRuzky</title>
       <!--Import library css-->
       <link href="/library/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
@@ -26,6 +28,16 @@
         <script src="/js/custom.js"></script>
     </head>
     <body>
+<script type="text/javascript">
+  $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-XSRF-Token': $('meta[name="_token"]').attr($article)
+                }
+            });
+        });
+</script>
+
 <div class="navbar navbar-fixed-top navbar-default" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -41,7 +53,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="{{ url('/home') }}">Home</a></li>
       <li><a href="#">Gallery</a></li>
-      <li><a href="#" class="article_link">Article</a></li>
+      <li><a class="article_link" href="#">Article</a></li>
       <li><a href="{{ url('/posts') }}">Posts</a></li>
     </ul>
     </div>
